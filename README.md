@@ -41,7 +41,7 @@ In case you do not include a specific step into the lists, pre-computed binary f
 ## Object Detection
 
 ### Lidar Point-Cloud from Range Image
-The Waymo Open Dataset uses range images to store LiDAR data. This data structure holds 3D points as a 360° "photo" of the scanning environment with the row dimension denoting the elevation angle of the laser beam and the column dimension denoting the azimuth angle. Each image consists in four channels:
+The Waymo Open Dataset uses range images to store LiDAR data. This data structure holds 3D points as a 360° photo of the scanning environment with the row dimension denoting the elevation angle of the laser beam and the column dimension denoting the azimuth angle. Each image consists in four channels:
 
 - _range_: encodes the distances from the LiDAR sensor to objects in the environment.
 - _intensity_: captures the intensity of the laser beam's return signal.
@@ -54,15 +54,13 @@ Below, the range and intensity channels are stack upon each others and converted
 <img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=100% height=100%>
 </p>
 
-Range images can be converted into 3D Point-Clouds by leveraging the sensor intrinsic and estrinsic parameters. Below, vehicles approaching from different directions and with varying degrees of visibility are shown in the 3D space. It is worth to notice that vehicles close to the LiDAR appear as dense distribution of points, making it is possible to distinguish  features as tires, side mirrors or windshields. In contrast, vehicles located farther from the sensor are covered with fewer points due to occlusion and the sensor's limited resolution, making it more challenging to identify finer details.
+Range images can be converted into 3D Point-Clouds by leveraging the sensor intrinsic and estrinsic parameters. Below, vehicles approaching from different directions and with varying degrees of visibility are shown in the 3D space. It is worth to notice that vehicles close to the LiDAR appear as dense distribution of points, making it possible to distinguish  features as tires, side mirrors or windshields. In contrast, vehicles located farther from the sensor are covered with fewer points due to occlusion and the sensor's limited resolution, making it more challenging to identify finer details.
 
 | Vehicle front view            |  Vehicle rear view |
 :-------------------------:|:-------------------------:
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_front_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_rear_pcl.png)
 | **Parked vehicle**           |  **Distant vehicles** |
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/parked_vehicle_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/far_vehicle_pcl.png)
-
-
 
 
 ### Birds-Eye View from Lidar Point-Cloud
