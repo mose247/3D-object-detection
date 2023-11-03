@@ -90,8 +90,8 @@ In this project, two pre-trained architectures are tested: Complex YOLOv4 and FP
 :------------: |
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/camera_labels.jpg)
 
-
 ### Performance Evaluation 
+In this section a more objective evaluation of the models' performance is provided by using the precision and recall metrics. Precision measures the accuracy of positive predictions made by a model, while  recall evaluates the model's ability to identify all relevant instances of the positive class in the dataset. The results below are obtained using 0.5 as IoU threshold for identifying true positives detections.
 
 ## Object Tracking
 > TO DO
