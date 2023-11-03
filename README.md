@@ -7,7 +7,7 @@ The project consists of two major parts:
 1. **Object detection**: In this part, two deep-learning approaches (Complex YOLOv4 and FPN ResNet18) are used to detect vehicles in LiDAR data based on a birds-eye view of the 3D point-cloud. Also, standard metrics are used to evaluate the performance of the detection approaches. 
 2. **Object tracking**: In this part, an extended Kalman filter is used to track vehicles over time, based on the LiDAR detections fused with camera detections. Data association and track management are implemented as well.
 
-## Table of Contents
+## Table of Contentsor's resolution 
 1. [Table of Contents](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#install--run)
 2. [Object Detection](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#object-detection)
    1. [Lidar Point-Cloud from Range Image](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#lidar-point-cloud-from-range-image)
@@ -54,10 +54,12 @@ Below, the range and intensity channels are stack upon each others and converted
 <img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=100% height=100%>
 </p>
 
+Range images can be converted into 3D Point-Clouds using the sensor intrinsic and estrinsic parameters. Below, vehicles approaching from different directions and with varying degrees of visibility are shown in the 3D space. Vehicles that are close to the LiDAR appear denser and from them it is possible to distinguish tyres, sidemirrors and windshield. On the contrary, vehicles that are far away from the sensor are covered with fewer points due to occlusion and sensor's limited resolution, hence finer details are harder to identify.
+
 | Vehicle front view            |  Vehicle rear view |
 :-------------------------:|:-------------------------:
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_front_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_rear_pcl.png)
-| **Parked vehicle**           |  **Distant vehicle** |
+| **Parked vehicle**           |  **Distant vehicles** |
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/parked_vehicle_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/far_vehicle_pcl.png)
 
 
