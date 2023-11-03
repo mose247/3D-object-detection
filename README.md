@@ -93,13 +93,9 @@ In this project, two pre-trained architectures are tested: Complex YOLOv4 and FP
 ### Performance Evaluation 
 In this section a more objective evaluation of the models' performance is provided by using the precision and recall metrics. Precision measures the accuracy of positive predictions made by a model, while  recall evaluates the model's ability to identify all relevant instances of the positive class in the dataset. The results below are obtained using 0.5 as IoU threshold for identifying true positives detections.
 
-| YOLOv4 |
-:------------: |
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/yolov4_eval.png)
-
-| FPN ResNet18 |
-:------------: |
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/resnet_eval.png)
+| YOLOv4 | FPN ResNet18 |
+:------------: | :------------: 
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/yolov4_eval.png) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/resnet_eval.png)
 
 ## Object Tracking
 > TO DO
