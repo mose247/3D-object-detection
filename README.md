@@ -54,7 +54,7 @@ Below, the range and intensity channels are stack upon each others and converted
 <img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=100% height=100%>
 </p>
 
-Range images can be converted into 3D Point-Clouds using the sensor intrinsic and estrinsic parameters. Below, vehicles approaching from different directions and with varying degrees of visibility are shown in the 3D space. Vehicles that are close to the LiDAR appear denser and from them it is possible to distinguish tyres, sidemirrors and windshield. On the contrary, vehicles that are far away from the sensor are covered with fewer points due to occlusion and sensor's limited resolution, hence finer details are harder to identify.
+Range images can be converted into 3D Point-Clouds by leveraging the sensor intrinsic and estrinsic parameters. Below, vehicles approaching from different directions and with varying degrees of visibility are shown in the 3D space. It is worth to notice that vehicles close to the LiDAR appear as dense distribution of points, making it is possible to distinguish  features as tires, side mirrors or windshields. In contrast, vehicles located farther from the sensor are covered with fewer points due to occlusion and the sensor's limited resolution, making it more challenging to identify finer details.
 
 | Vehicle front view            |  Vehicle rear view |
 :-------------------------:|:-------------------------:
