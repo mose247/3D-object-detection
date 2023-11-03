@@ -1,5 +1,4 @@
 # ignore large files
-dataset/
-results/
-tools/objdet_models/darknet/pretrained/
-tools/objdet_models/resnet/pretrained/ 
+*.tfrecord
+*.pth 
+*.pkl      
