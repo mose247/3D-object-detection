@@ -41,7 +41,7 @@ In case you do not include a specific step into the lists, pre-computed binary f
 ## Object Detection
 
 ### Lidar Point-Cloud from Range Image
-[range](range_intensity_image.jpg)
+![range](range_intensity_image.jpg)
 
 ### Birds-Eye View from Lidar Point-Cloud
 
