@@ -95,11 +95,11 @@ In this section a more objective evaluation of the models' performance is provid
 
 | YOLOv4 |
 :------------: |
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/yolov4_eval.jpg)
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/yolov4_eval.png)
 
 | FPN ResNet18 |
 :------------: |
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/resnet_eval.jpg)
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/resnet_eval.png)
 
 ## Object Tracking
 > TO DO
