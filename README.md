@@ -84,6 +84,7 @@ As expected, pixels corresponding to vehicles' roof or other high objects appear
  BEV labels | YOLOv4 | FPN ResNet18 |
 :------------:|:----------:|:-----------:
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_labels.jpg) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections_yolov4.jpg)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections_resnet.jpg) 
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/camera_labels.jpg)
 
 
 ### Performance Evaluation 
