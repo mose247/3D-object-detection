@@ -68,20 +68,30 @@ LiDAR Point-Clouds are an unstructured assortment of data points, which are dist
 
 The BEV representation of a Point-Cloud is achieved by firstly flatten the points along the upward-facing axis. The 2D Cloud is then divided into a regular grid and three values (i.e. max height, max intensity, density) are stored for each region of the road surface. 
 
-This enables us to treat the resulting Point-Cloud as a RGB image, where each pixel corresponds to a road patch. Below, it is shown an example of 3-channels BEV map where:
+<p align="center">
+<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg" title="BEV map" width=35% height=35%>
+</p>
+
+This enables us to treat the resulting Point-Cloud as a RGB image, where each pixel corresponds to a road patch. Above, it is shown an example of 3-channels BEV map where:
 - _R-channel_: encodes density values.
 - _G-channel_: encodes height values.
 - _B-channel_: encodes intensity values.
 
-| BEV map            |  BEV map with detections |
-:-------------------------:|:-------------------------:
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections.jpg)
-
 As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. In contrast, highly reflective objects, as vehicles' rear lights or plates, take a more bluish color. Finally, the red channel is more intense near the LiDAR sensor, representing the fact that point density is inversely proportional to the range.
 
 ### Object Detection in BEV Image
+In this project, two pre-trained architectures are tested: Complex YOLOv4 and FPN ResNet18. Below, it is provided a qualitative comparison of these models using the frame 171 in Sequence 1. It is evident that both models successfully detect the three vehicles on the road, while the two parked vehicles go undetected. Nevertheless, this outcome can be considered satisfactory. This is because, upon examining the corresponding camera image for the same frame, a substantial portion of the parked vehicles is obscured by foreground objects, such as a wall and a tree. Consequently, it is unreasonable to expect them to appear clearly in the LiDAR Point-Cloud.
+
+ BEV labels | YOLOv4 | FPN ResNet18 |
+:------------:|:----------:|:-----------:
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_labels.jpg) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections_yolov4.jpg)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections_resnet.jpg) 
+
+| Camera labels |
+:------------: |
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/camera_labels.jpg)
 
 ### Performance Evaluation 
+In this section a more objective evaluation of the models' performance is provided by using the precision and recall metrics. Precision measures the accuracy of positive predictions made by a model, while  recall evaluates the model's ability to identify all relevant instances of the positive class in the dataset. The results below are obtained using 0.5 as IoU threshold for identifying true positives detections.
 
 ## Object Tracking
 > TO DO
