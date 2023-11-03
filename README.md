@@ -77,7 +77,7 @@ This enables us to treat the resulting Point-Cloud as a RGB image, where each pi
 :-------------------------:|:-------------------------:
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections.jpg)
 
-As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. In contrast, highly reflective objects, as vehicles' rear lights or plates, instead a more bluish color. Finally, the red channel is more intense near the LiDAR's location, representing the fact that point density inversely proportional to the range.
+As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. In contrast, highly reflective objects, as vehicles' rear lights or plates, take a more bluish color. Finally, the red channel is more intense near the LiDAR sensor, representing the fact that point density is inversely proportional to the range.
 
 ### Object Detection in BEV Image
 
