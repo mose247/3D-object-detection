@@ -57,9 +57,7 @@ Below, the range and intensity channels are stack upon each others and converted
 | Approaching vehicle            |  Ahead vehicles |
 :-------------------------:|:-------------------------:
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_front_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_rear_pcl.png)
-
-| Parked vehicle            |  Far vehicle |
-:-------------------------:|:-------------------------:
+| **Parked vehicle**           |  **Far vehicle** |
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/parked_vehicle_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/far_vehicle_pcl.png)
 
 
