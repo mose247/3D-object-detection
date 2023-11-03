@@ -42,7 +42,7 @@ In case you do not include a specific step into the lists, pre-computed binary f
 
 ### Lidar Point-Cloud from Range Image
 <p align="center">
-<img src="https://github.com/mose247/Object_detection_in_urban_environments/assets/91455159/3d1af224-f4d5-4bbe-a329-4fa923e757ce" title="Total loss" width=50% height=50%>
+<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=50% height=50%>
 </p>
 ### Birds-Eye View from Lidar Point-Cloud
 
