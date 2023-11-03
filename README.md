@@ -62,8 +62,14 @@ Range images can be converted into 3D Point-Clouds by leveraging the sensor intr
 | **Parked vehicle**           |  **Distant vehicles** |
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/parked_vehicle_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/far_vehicle_pcl.png)
 
-
 ### Birds-Eye View from Lidar Point-Cloud
+| BEV map            |  BEV map with detections |
+:-------------------------:|:-------------------------:
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections.jpg
+)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg
+)
+| **Ground Truth in camera view** |
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/camera_gt.jpg)
 
 ### Object Detection in BEV Image
 
