@@ -42,7 +42,7 @@ In case you do not include a specific step into the lists, pre-computed binary f
 
 ### Lidar Point-Cloud from Range Image
 <p align="center">
-<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=50% height=50%>
+<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=100% height=100%>
 </p>
 ### Birds-Eye View from Lidar Point-Cloud
 
