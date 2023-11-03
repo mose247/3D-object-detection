@@ -80,7 +80,7 @@ This enables us to treat the resulting Point-Cloud as a RGB image, where each pi
 As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. In contrast, highly reflective objects, as vehicles' rear lights or plates, take a more bluish color. Finally, the red channel is more intense near the LiDAR sensor, representing the fact that point density is inversely proportional to the range.
 
 ### Object Detection in BEV Image
-In this project, two pre-trained architectures are tested: Complex YOLOv4 and FPN ResNet18. Below, it is shown a qualitative comparison between the two models on the frame 171 of Sequence 1. As you can see, both model are able to detect the three on-road vehicles, while the two parked ones are missed. Still, this is a satisfactory result. Indeed, if we look at the camera image corresponding to the same frame, a significant par of the parked vehicles is occlouded from a sidewall, thus we cannot expect the LiDAR to detect them.
+In this project, two pre-trained architectures are tested: Complex YOLOv4 and FPN ResNet18. Below, it is provided a qualitative comparison of these models using the frame 171 in Sequence 1. It is evident that both models successfully detect the three vehicles on the road, while the two parked vehicles go undetected. Nevertheless, this outcome can be considered satisfactory. This is because, upon examining the corresponding camera image for the same frame, a substantial portion of the parked vehicles is obscured by foreground objects, such as a wall and a tree. Consequently, it is unreasonable to expect them to appear clearly in the LiDAR Point-Cloud.
 
  BEV labels | YOLOv4 | FPN ResNet18 |
 :------------:|:----------:|:-----------:
