@@ -56,8 +56,8 @@ Below, the range and intensity channels are stack upon each others and converted
 
 | ResNet50 V1             |  MobileNet V2 |
 :-------------------------:|:-------------------------:
-![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/output_resnet50.gif)  |  ![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/output_mobilenet.gif)
-![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/output_resnet50.gif)  |  ![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/output_mobilenet.gif)
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_front_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_rear_pcl.png)
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/parked_vehicle_pcl.png)  |  ![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/far_vehicle.gif)
 
 
 
