@@ -63,7 +63,21 @@ Range images can be converted into 3D Point-Clouds by leveraging the sensor intr
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/parked_vehicle_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/far_vehicle_pcl.png)
 
 
-### Birds-Eye View from Lidar Point-Cloud
+### Bird's-Eye View from Lidar Point-Cloud
+LiDAR Point-Clouds are an unstructured assortment of data points, which are distributed unevenly over the measurement range. With the prevalence of convolutional neural networks (CNN) in object detection, Point-Clouds are typically converted into a more convenient structure before being fed to the model. In the literature, Bird's-Eye View (BEV) is the most widely used projection scheme. 
+
+The BEV representation of a Point-Cloud is achieved by firstly flatten the points along the upward-facing axis. The 2D Cloud is then divided into a regular grid and three values (i.e. max height, max intensity, density) are stored for each region of the road surface. 
+
+This enables us to treat the resulting Point-Cloud as a RGB image, where each pixel corresponds to a road patch. Below, it is shown an example of 3-channels BEV map where:
+- _R-channel_: encodes density values.
+- _G-channel_: encodes height values.
+- _B-channel_: encodes intensity values.
+
+| BEV map            |  BEV map with detections |
+:-------------------------:|:-------------------------:
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections.jpg)
+
+As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. In contrast, highly reflective objects, as vehicles' rear lights or plates, take a more bluish color. Finally, the red channel is more intense near the LiDAR sensor, representing the fact that point density is inversely proportional to the range.
 
 ### Object Detection in BEV Image
 
