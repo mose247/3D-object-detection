@@ -54,6 +54,14 @@ Below, the range and intensity channels are stack upon each others and converted
 <img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=100% height=100%>
 </p>
 
+| ResNet50 V1             |  MobileNet V2 |
+:-------------------------:|:-------------------------:
+![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/output_resnet50.gif)  |  ![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/output_mobilenet.gif)
+![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/output_resnet50.gif)  |  ![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/output_mobilenet.gif)
+
+
+
+
 ### Birds-Eye View from Lidar Point-Cloud
 
 ### Object Detection in BEV Image
