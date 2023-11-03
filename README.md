@@ -68,14 +68,14 @@ LiDAR Point-Clouds are an unstructured assortment of data points, which are dist
 
 The BEV representation of a Point-Cloud is achieved by firstly flatten the points along the upward-facing axis. The 2D Cloud is then divided into a regular grid and three values (i.e. max height, max intensity, density) are stored for each region of the road surface. 
 
-This enables us to treat the resulting Point-Cloud as a RGB image, where each pixel corresponds to a road patch. Below, it is shown an example of 3-channels BEV map where:
+<p align="center">
+<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg" title="BEV map" width=40% height=40%>
+</p>
+
+This enables us to treat the resulting Point-Cloud as a RGB image, where each pixel corresponds to a road patch. Above, it is shown an example of 3-channels BEV map where:
 - _R-channel_: encodes density values.
 - _G-channel_: encodes height values.
 - _B-channel_: encodes intensity values.
-
-<p align="center">
-<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg" title="BEV map" width=50% height=50%>
-</p>
 
 As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. In contrast, highly reflective objects, as vehicles' rear lights or plates, take a more bluish color. Finally, the red channel is more intense near the LiDAR sensor, representing the fact that point density is inversely proportional to the range.
 
