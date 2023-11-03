@@ -73,9 +73,9 @@ This enables us to treat the resulting Point-Cloud as a RGB image, where each pi
 - _G-channel_: encodes height values.
 - _B-channel_: encodes intensity values.
 
-| BEV map            |
-:-------------------------:|
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg) 
+<p align="center">
+<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg" title="BEV map" width=100% height=100%>
+</p>
 
 As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. In contrast, highly reflective objects, as vehicles' rear lights or plates, take a more bluish color. Finally, the red channel is more intense near the LiDAR sensor, representing the fact that point density is inversely proportional to the range.
 
