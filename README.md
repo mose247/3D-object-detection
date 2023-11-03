@@ -42,10 +42,13 @@ In case you do not include a specific step into the lists, pre-computed binary f
 
 ### Lidar Point-Cloud from Range Image
 The Waymo Open Dataset uses range images to store LiDAR data. This data structure holds 3D points as a 360° "photo" of the scanning environment with the row dimension denoting the elevation angle of the laser beam and the column dimension denoting the azimuth angle. Each image consists in four channels:
+
 - _range_: encodes the distances from the LiDAR sensor to objects in the environment.
 - _intensity_: captures the intensity of the laser beam's return signal.
 - _eligibility_: contains binary values indicating whether a given pixel in the range image is considered valid.
 - _camera projection_: provides information about the 2D projection of the LiDAR data onto a camera image.
+  
+Below, the range and intensity channels are stack upon each others and converted in 8-bit grey-scale images. To simplify the interpretability, the images are cropped to show just +/-60° around the forward-facing x-axis.
 
 <p align="center">
 <img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=100% height=100%>
