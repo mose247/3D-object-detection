@@ -369,6 +369,8 @@ def show_objects_labels_in_bev(detections, object_labels, bev_maps, configs):
     
     label_detections = convert_labels_into_objects(object_labels, configs)
     project_detections_into_bev(bev_map, label_detections, configs, [0,255,0])
+    
+    #cv2.imwrite('img/bev_labels.jpg', bev_map)
     project_detections_into_bev(bev_map, detections, configs, [0,0,255])
     
 
@@ -384,9 +386,11 @@ def show_objects_in_bev_labels_in_camera(detections, bev_maps, image, object_lab
     bev_map = cv2.resize(bev_map, (configs.bev_width, configs.bev_height))
     project_detections_into_bev(bev_map, detections, configs)
     bev_map = cv2.rotate(bev_map, cv2.ROTATE_180)
+    #cv2.imwrite('img/bev_detections_yolov4.jpg', bev_map)
 
     # project ground-truth labels into camera image
     img_rgb = project_labels_into_camera(camera_calibration, image, object_labels, object_labels_valid)
+    #cv2.imwrite('img/camera_labels.jpg', img_rgb)
 
     # merge camera image and bev image into a combined view
     img_rgb_h, img_rgb_w = img_rgb.shape[:2]
