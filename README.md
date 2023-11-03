@@ -54,10 +54,12 @@ Below, the range and intensity channels are stack upon each others and converted
 <img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/range_intensity_image.jpg" title="Range and Intensity channels" width=100% height=100%>
 </p>
 
-| ResNet50 V1             |  MobileNet V2 |
+| Approaching vehicle            |  Ahead vehicles |
 :-------------------------:|:-------------------------:
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_front_pcl.png)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/vehicle_rear_pcl.png)
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/parked_vehicle_pcl.png)  |  ![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/far_vehicle.gif)
+| Parked vehicle            |  Far vehicle |
+:-------------------------:|:-------------------------:
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/parked_vehicle_pcl.png)  |  ![](https://github.com/mose247/Object_detection_in_urban_environments/blob/main/data/far_vehicle_pcl.gif)
 
 
 
