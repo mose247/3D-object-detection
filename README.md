@@ -73,7 +73,7 @@ This enables us to treat the resulting Point-Cloud as an RGB image, where each p
 - _G-channel_: encodes height values.
 - _B-channel_: encodes intensity values.
 
-As expected, pixels corresponding to vehicles' roof or high vegetation appear more greenish. Similarly, pixels representing highly reflective objects, as vehicles' rear lights or plates, have a more bluish color.
+As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. Highly reflective objects, as vehicles' rear lights or plates, take instead a more bluish color. Finally, the red channel is more intense near to the LiDAR location, representing the fact that point density decreases with the range.
 
 | BEV map            |  BEV map with detections |
 :-------------------------:|:-------------------------:
