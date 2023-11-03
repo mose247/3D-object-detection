@@ -8,7 +8,7 @@ The project consists of two major parts:
 2. **Object tracking**: In this part, an extended Kalman filter is used to track vehicles over time, based on the LiDAR detections fused with camera detections. Data association and track management are implemented as well.
 
 ## Table of Contentsor's resolution 
-1. [Table of Contents](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#install--run)
+1. [Install & Run](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#install--run)
 2. [Object Detection](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#object-detection)
    1. [Lidar Point-Cloud from Range Image](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#lidar-point-cloud-from-range-image)
    2. [Birds-Eye View from Lidar Point-Cloud](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#birds-eye-view-from-lidar-point-cloud)
