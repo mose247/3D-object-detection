@@ -64,9 +64,16 @@ Range images can be converted into 3D Point-Clouds by leveraging the sensor intr
 
 
 ### Bird's-Eye View from Lidar Point-Cloud
-LiDAR Point-Clouds are an unstructured assortment of data points, which are distributed unevenly over the measurement range. With the prevalence of convolutional neural networks (CNN) in object detection, Point-Clouds are typically converted into a more convenient structure before being fed to the model. In the literature, Bird's-Eye View (BEV) is the most widely used projection scheme. The BEV representation of a Point-Cloud is achieved by firstly flatten the points along the upward-facing axis (typically the z-axis). The 2D Cloud is then divided into a regular grid and three values (i.e. max height, max intensity, density) are stored for each region of the road surface. 
+LiDAR Point-Clouds are an unstructured assortment of data points, which are distributed unevenly over the measurement range. With the prevalence of convolutional neural networks (CNN) in object detection, Point-Clouds are typically converted into a more convenient structure before being fed to the model. In the literature, Bird's-Eye View (BEV) is the most widely used projection scheme. 
 
-This enables us to treat the resulting Point-Cloud as an RGB image, where each pixel corresponds to a road patch. 
+The BEV representation of a Point-Cloud is achieved by firstly flatten the points along the upward-facing axis. The 2D Cloud is then divided into a regular grid and three values (i.e. max height, max intensity, density) are stored for each region of the road surface. 
+
+This enables us to treat the resulting Point-Cloud as an RGB image, where each pixel corresponds to a road patch. Below, it is shown an example of 3-channels BEV map where:
+- _r-channel_: corresponds to density values.
+- _g-channel_: corresponds to height values.
+- _b-channel_: corresponds to intensity values.
+
+
 
 | BEV map            |  BEV map with detections |
 :-------------------------:|:-------------------------:
