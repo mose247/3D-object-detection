@@ -73,21 +73,21 @@ This enables us to treat the resulting Point-Cloud as a RGB image, where each pi
 - _G-channel_: encodes height values.
 - _B-channel_: encodes intensity values.
 
-| BEV map            |  BEV map with detections |
-:-------------------------:|:-------------------------:
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections.jpg)
+| BEV map            |
+:-------------------------:|
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg) 
 
 As expected, pixels corresponding to vehicles' roof or other high objects appear greenish. In contrast, highly reflective objects, as vehicles' rear lights or plates, take a more bluish color. Finally, the red channel is more intense near the LiDAR sensor, representing the fact that point density is inversely proportional to the range.
 
 ### Object Detection in BEV Image
- Camera labels |
-:------------: |
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/camera_labels.jpg)
 
  BEV labels | YOLOv4 | FPN ResNet18 |
 :------------:|:----------:|:-----------:
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_labels.jpg) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections_yolov4.jpg)  |  ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_detections_resnet.jpg) 
 
+| Camera labels |
+:------------: |
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/camera_labels.jpg)
 
 
 ### Performance Evaluation 
