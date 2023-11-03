@@ -69,7 +69,7 @@ LiDAR Point-Clouds are an unstructured assortment of data points, which are dist
 The BEV representation of a Point-Cloud is achieved by firstly flatten the points along the upward-facing axis. The 2D Cloud is then divided into a regular grid and three values (i.e. max height, max intensity, density) are stored for each region of the road surface. 
 
 <p align="center">
-<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg" title="BEV map" width=40% height=40%>
+<img src="https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/bev_map.jpg" title="BEV map" width=30% height=30%>
 </p>
 
 This enables us to treat the resulting Point-Cloud as a RGB image, where each pixel corresponds to a road patch. Above, it is shown an example of 3-channels BEV map where:
