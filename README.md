@@ -15,6 +15,11 @@ The project consists of two major parts:
    3. [Object Detection in BEV Image](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#object-detection-in-bev-image)
    4. [Performance Evaluation](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#performance-evaluation)
 4. [Object Tracking](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#object-tracking)
+   1. [Extended Kalman Filter](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#extended-kalman-filter)
+   2. [Track Management](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#track-managemnent)
+   3. [Data Association](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#data-association)
+   4. [Camera and LiDAR dusion](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#camera-and-lidar-fusion)
+   5. [Results](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#results)
 
 ## Install & Run
 To setup the project, start by creating a local copy of the current repository:
@@ -98,6 +103,12 @@ In this section a more objective evaluation of the models' performance is provid
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/yolov4_eval.png) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/resnet_eval.png)
 
 ## Object Tracking
+
+### Extended Kalman Filter
+### Track Management
+### Data Association
+### Camera and LiDAR fusion
+### Results
 
 | Camera + LiDAR fusion 
 :------------: |
