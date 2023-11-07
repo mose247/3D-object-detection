@@ -134,14 +134,28 @@ Every tracking system needs a set of rules to initialize new tracks, update curr
 ```
 score = n° detections in last n frames / n
 ```
-Using a score threshold, tracks are then classified into three states `initialized`, `tentative` and `confirmed`. This enables to set different track removal policies on the basis of their state. For instance, the following deletion criteria is used:
+Using a score threshold, tracks are then classified into three states `initialized`, `tentative` and `confirmed`. This enables to set different track removal policies on the basis of their state. For instance, the following management logic is used:
+
 ```
-if track.state == 'confirmed':
-   delete(track) if track.score < 0.6                             # delete track if it is not visible anymore
-   delete(track) if track.P[0,0] > 3**2 or track.P[1,1] > 3**2    # delete track if its (x,y) positioning uncertainty is too high
-else:
-   delete(track) if track.score < 0.17                            # delete 'ghost' track as soon as possible
-   delete(track) if track.P[0,0] > 3**2 or track.P[1,1] > 3**2    # delete track if its (x,y) positioning uncertainty is too high
+for track in assigned_tracks:         # tracks matched to a measurement
+   update track        
+   update track.score
+   update track.state
+
+for track in unassigned_tracks:       # tracks not assigned to a measurement
+   if track is in sensor FOV:
+      update track.score
+
+for track in all_tracks:              # check if any track has to be deleted
+   if track.state == 'confirmed':
+      delete(track) if track.score < 0.6                             # delete track if it is not visible anymore
+      delete(track) if track.P[0,0] > 3**2 or track.P[1,1] > 3**2    # delete track if its (x,y) positioning uncertainty is too high
+   else:
+      delete(track) if track.score < 0.17                            # delete 'ghost' track as soon as possible
+      delete(track) if track.P[0,0] > 3**2 or track.P[1,1] > 3**2    # delete track if its (x,y) positioning uncertainty is too high
+
+for meas in unassigned_measurements:   # initialize new tracks
+   init new track with meas
 ```
 
 ### Data Association
