@@ -168,8 +168,20 @@ As you can see, this distance not only takes into account the mean of the residu
 In the project, Simple Nearest Neighbor (SNN) is used as data association method. It consists in calculating all Mahalanobis distances between tracks and measurements and iteratively updating the closest association pair.
 
 ### Camera and LiDAR fusion
-### Results
+As pointed out in the Extended Kalman Filter [section](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#extended-kalman-filter), LiDAR and camera data are represented by two different measurement models. 
 
+The positional part of the state is mapped to the LiDAR frame through the linear relation:
+```
+z = R*x_pos   # where H=R is the rotation matrix from the vehicle to the sensor frame
+```
+Contrarialy, the mapping to image coordinates is nonlinear:
+```
+z[0] = c_i - f_i * R*x_pos[1]/R*x_pos[0]      # c_i principal point horizontal coord, f_i focal length in horizontal dim
+z[1] = c_j - f_j * R*x_pos[2]/R*x_pos[0]      # c_j principal point vertical coord, f_j focal length in vertical dim
+```
+Thus, when a measurement arrives from the camera sensor, it is necessary to linearize the equation to integrate it in the EKF.
+
+### Results
 | Camera + LiDAR fusion 
 :------------: |
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/lidar_camera_tracking.gif) 
