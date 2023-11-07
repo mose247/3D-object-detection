@@ -42,17 +42,19 @@ class Sensor:
         self.veh_to_sens = np.linalg.inv(self.sens_to_veh) # transformation vehicle to sensor coordinates
     
     def in_fov(self, x):
-        # check if an object x can be seen by this sensor
-        ############
-        # TODO Step 4: implement a function that returns True if x lies in the sensor's field of view, 
-        # otherwise False.
-        ############
+        # vehicle to sensor coordinates transformation
+        pos_veh = np.ones((4, 1)) # homogeneous coordinates
+        pos_veh[0:3] = x[0:3] 
+        pos_sens = self.veh_to_sens * pos_veh 
 
-        return True
+        # check if an object x can be seen by this sensor
+        visible = False
+        alpha = np.arctan2(pos_sens[1], pos_sens[0])
+        if alpha >= self.fov[0] and alpha <= self.fov[1]:
+            visible = True
+
+        return visible
         
-        ############
-        # END student code
-        ############ 
              
     def get_hx(self, x):    
         # calculate nonlinear measurement expectation value h(x)   
@@ -61,21 +63,24 @@ class Sensor:
             pos_veh[0:3] = x[0:3] 
             pos_sens = self.veh_to_sens*pos_veh # transform from vehicle to lidar coordinates
             return pos_sens[0:3]
-        elif self.name == 'camera':
-            
-            ############
-            # TODO Step 4: implement nonlinear camera measurement function h:
-            # - transform position estimate from vehicle to camera coordinates
-            # - project from camera to image coordinates
-            # - make sure to not divide by zero, raise an error if needed
-            # - return h(x)
-            ############
-
-            pass
         
-            ############
-            # END student code
-            ############ 
+        elif self.name == 'camera':
+            pos_veh = np.ones((4, 1)) # homogeneous coordinates
+            pos_veh[0:3] = x[0:3] 
+            pos_sens = self.veh_to_sens * pos_veh # transform from vehicle to camera coordinates
+            pos_sens = pos_sens[0:3]
+
+            # calculate nonlinear camera measurement value h(x)   
+            hx = np.zeros((2,1))
+
+            # check and print error message if dividing by zero
+            if pos_sens[0]==0:
+                raise NameError('Camera model not defined for pos_sens[0]=0!')
+            else:
+                hx[0,0] = self.c_i - self.f_i*pos_sens[1]/pos_sens[0]     # project to image coordinates
+                hx[1,0] = self.c_j - self.f_j*pos_sens[2]/pos_sens[0]     # project to image coordinates
+                return hx    
+
         
     def get_H(self, x):
         # calculate Jacobian H at current x from h(x)
@@ -111,19 +116,11 @@ class Sensor:
         
     def generate_measurement(self, num_frame, z, meas_list):
         # generate new measurement from this sensor and add to measurement list
-        ############
-        # TODO Step 4: remove restriction to lidar in order to include camera as well
-        ############
-        
-        if self.name == 'lidar':
-            meas = Measurement(num_frame, z, self)
-            meas_list.append(meas)
+        meas = Measurement(num_frame, z, self)
+        meas_list.append(meas)
+
         return meas_list
-        
-        ############
-        # END student code
-        ############ 
-        
+       
         
 ################### 
         
@@ -150,14 +147,14 @@ class Measurement:
             self.length = z[5]
             self.height = z[3]
             self.yaw = z[6]
-        elif sensor.name == 'camera':
-            
-            ############
-            # TODO Step 4: initialize camera measurement including z and R 
-            ############
 
-            pass
-        
-            ############
-            # END student code
-            ############ 
+        elif sensor.name == 'camera':
+            sigma_cam_i = params.sigma_cam_i # load params
+            sigma_cam_j = params.sigma_cam_i
+            self.z = np.zeros((sensor.dim_meas,1)) # measurement vector
+            self.z[0] = z[0]
+            self.z[1] = z[1]
+            self.width = z[2]
+            self.length = z[3]
+            self.R = np.matrix([[sigma_cam_i**2, 0], # measurement noise covariance matrix
+                                [0, sigma_cam_j**2]])

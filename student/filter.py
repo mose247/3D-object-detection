@@ -94,8 +94,7 @@ class Filter:
     
     def gamma(self, track, meas):
         # compute residual (error between actual measurement and expected measurement)
-        H = meas.sensor.get_H(track.x)
-        gamma = meas.z - H * track.x  
+        gamma = meas.z - meas.sensor.get_hx(track.x)
   
         return gamma
         
