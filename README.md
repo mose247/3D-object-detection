@@ -159,6 +159,12 @@ for meas in unassigned_measurements:   # initialize new tracks
 ```
 
 ### Data Association
+Deciding which measurement should be used to update which track is not trivial and special care should be put in order to avoid using wrong measurements that can lead the divergence of the state. Instead of the simple Euclidean distance, the Mahalanobis distance is more suitable in this context to measure the proximity of a data point `z` to a tracked state `x`:
+```
+mhd = (z-h(x)).T*S.I*(z-h(x))
+```
+As you can see, this distance not only takes into account the mean of the variables but also their uncertainty, given by the covariance matrix `S`. Since the Mahalanobis distance is inversely proportional to `S`, the higher is the residual covariance and the smaller results to be.
+
 ### Camera and LiDAR fusion
 ### Results
 
