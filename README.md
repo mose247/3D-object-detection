@@ -176,10 +176,10 @@ z = R*x_pos   # where H=R is the rotation matrix from the vehicle to the sensor 
 ```
 Contrarialy, the mapping to image coordinates is nonlinear:
 ```
-z[0] = c_i - f_i * R*x_pos[1]/R*x_pos[0]      # c_i principal point horizontal coord, f_i focal length in horizontal dim
-z[1] = c_j - f_j * R*x_pos[2]/R*x_pos[0]      # c_j principal point vertical coord, f_j focal length in vertical dim
+z[0] = c_i - f_i * (R*x_pos[1])/(R*x_pos[0])      # c_i principal point horizontal coord, f_i focal length in horizontal dim
+z[1] = c_j - f_j * (R*x_pos[2])/(R*x_pos[0])      # c_j principal point vertical coord, f_j focal length in vertical dim
 ```
-Thus, when a measurement arrives from the camera sensor, it is necessary to linearize the equation to integrate it in the EKF.
+Thus, when a measurement arrives from the camera sensor, it is necessary to linearize the equation before using it in the Kalman Filter.
 
 ### Results
 | Camera + LiDAR fusion 
