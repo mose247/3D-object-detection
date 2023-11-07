@@ -8,7 +8,7 @@ The project consists of two major parts:
 2. **Object tracking**: In this part, an extended Kalman filter is used to track vehicles over time, based on the LiDAR detections fused with camera detections. Data association and track management are implemented as well.
 
 ## Table of Contentsor's resolution 
-1. [Table of Contents](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#install--run)
+1. [Install & Run](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#install--run)
 2. [Object Detection](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#object-detection)
    1. [Lidar Point-Cloud from Range Image](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#lidar-point-cloud-from-range-image)
    2. [Birds-Eye View from Lidar Point-Cloud](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#birds-eye-view-from-lidar-point-cloud)
@@ -92,6 +92,10 @@ In this project, two pre-trained architectures are tested: Complex YOLOv4 and FP
 
 ### Performance Evaluation 
 In this section a more objective evaluation of the models' performance is provided by using the precision and recall metrics. Precision measures the accuracy of positive predictions made by a model, while  recall evaluates the model's ability to identify all relevant instances of the positive class in the dataset. The results below are obtained using 0.5 as IoU threshold for identifying true positives detections.
+
+| YOLOv4 | FPN ResNet18 |
+:------------: | :------------: 
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/yolov4_eval.png) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/resnet_eval.png)
 
 ## Object Tracking
 > TO DO
