@@ -117,14 +117,17 @@ To track the position of targets in the 3D space an Extended Kalman Filter (EKF)
 
    In our case, the targets are assumed to follow constant velocity motion. Therefore, the state transition equation is already linear with respect to the state       and it can be expressed exactly in matrix form `f(x) = F*x`. 
     
-3. _Update_step_: corrects the state `x` and covariance `P` estimation using sensor measurements. Their values are updated on the basis of the error between what the expected measurement (i.e. what the sensor were expected to "see" if the true state was the one estimated in the previous step) and the actual data.
+3. _Update_step_: corrects the state `x` and covariance `P` estimation using sensor measurements. Their values are updated on the basis of the error between what the expected measurement (i.e. what the sensor is expected to "see" if the true state was the one estimated in the previous step) and the actual data.
    ```
    gamma = z - h(x)    # residual
    S = H*P*H.T + R     # residual variance, R is the process covariance matrix and models measurements uncertainty
    K = P*H.T*S.I       # Kalman gain
    x = x + K*gamma     # state update
-   P = (I - K*H)*P     # covariance update 
+   P = (I - K*H)*P     # covariance update
    ```
+   Again, the EKF allows us to extend the KF for handling nonlinear systems where the measurement equation `h()` is nonlinear. It does this by linearizing the         model using its first-order Taylor expansion, `H`, evaluated in a neighbourhood of the current state.
+
+   In our case, it is necessary to distinguish between LiDAR and camera measurements. Indeed, while the LiDAR measuerment equation is linear with respect the       state (i.e. can be expressed exactly as `h(x) = H*x`), the camera one is not. Therefore, in this second case it is necessary to linearize the system by evaluating the camera Jacobian `H` in the proximity of the current state.
 
 ### Track Management
 ### Data Association
