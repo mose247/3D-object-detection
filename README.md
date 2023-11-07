@@ -130,7 +130,7 @@ To track the position of targets in the 3D space an Extended Kalman Filter (EKF)
    In our case, it is necessary to distinguish between LiDAR and camera measurements. Indeed, while the LiDAR measuerment equation is linear with respect the       state (i.e. can be expressed exactly as `h(x) = H*x`), the camera one is not. Therefore, in this second case it is necessary to linearize the system by evaluating the camera Jacobian `H` in the proximity of the current state.
 
 ### Track Management
-Every tracking system needs a set of rules to initialize new tracks, update current ones and delete invalid/old ones. A simple way to classify tracks is to assign a score to each one based on the number of successful detection in the last `n` frames. In the project, we use `n=6` and the following score definition:
+Every tracking system needs a set of rules to initialize new tracks, update current ones and delete invalid/old ones. In order to simplify tracks management, it is useful to assign them a score. In this project, we scored them based on the number of successful detection (i.e. number of times a track is matched to a measurement) in the last `n` frames:
 ```
 score = n° detections in last n frames / n
 ```
