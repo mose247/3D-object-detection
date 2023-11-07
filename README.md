@@ -134,6 +134,15 @@ Every tracking system needs a set of rules to initialize new tracks, update curr
 ```
 score = n° detections in last n frames / n
 ```
+Using a score threshold, tracks are then classified into three states `initialized`, `tentative` and `confirmed`. This enables to set different track removal policies on the basis of their state. For instance, the following deletion criteria is used:
+```
+if track.state == 'confirmed':
+   delete(track) if track.score < 0.6                             # delete track if it is not visible anymore
+   delete(track) if track.P[0,0] > 3**2 or track.P[1,1] > 3**2    # delete track if its (x,y) positioning uncertainty is too high
+else:
+   delete(track) if track.score < 0.17                            # delete 'ghost' track as soon as possible
+   delete(track) if track.P[0,0] > 3**2 or track.P[1,1] > 3**2    # delete track if its (x,y) positioning uncertainty is too high
+```
 
 ### Data Association
 ### Camera and LiDAR fusion
