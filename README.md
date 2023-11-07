@@ -115,7 +115,7 @@ To track the position of targets in the 3D space an Extended Kalman Filter (EKF)
    The EKF extends the KF for handling nonlinear systems where the state transition function `f()` is nonlinear. It does this by linearizing the model using its
    first-order Taylor expansion, `F`, evaluated in a neighbourhood of the current state.
 
-   In our case, the targets are assumed to follow constant velocity motion. Therefore, the state transition equation is already linear with respect to the state       and no linearization is needed. 
+   In our case, the targets are assumed to follow constant velocity motion. Therefore, the state transition equation is already linear with respect to the state       and it can be expressed exactly in matrix form `f(x) = F*x`. 
     
 3. _Update_step_: corrects the state `x` and covariance `P` estimation using sensor measurements. Their values are updated on the basis of the error between what the expected measurement (i.e. what the sensor were expected to "see" if the true state was the one estimated in the previous step) and the actual data.
    ```
