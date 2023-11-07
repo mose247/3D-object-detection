@@ -99,7 +99,7 @@ In this section a more objective evaluation of the models' performance is provid
 
 ## Object Tracking
 
-| Camera + LiDAR | LiDAR only |
-:------------: | :------------: 
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/lidar_camera_tracking.gif) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/lidar_camera_tracking.gif)
-
+| Camera + LiDAR fusion 
+:------------: |
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/lidar_camera_tracking.gif) 
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/RMSE_lidar_camera.png) 
