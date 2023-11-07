@@ -163,7 +163,9 @@ Deciding which measurement should be used to update which track is not trivial a
 ```
 mhd = (z-h(x)).T*S.I*(z-h(x))
 ```
-As you can see, this distance not only takes into account the mean of the residual but also its uncertainty, given by the covariance matrix `S`. Specifically, since the Mahalanobis distance is inversely proportional to `S`, an higher covariance corresponds to a smaller distance. In practise, given two states with the same Euclidean distance from a measurement, the Mahalanobis one assign a closer measure to the most uncertain track.  
+As you can see, this distance not only takes into account the mean of the residual but also its uncertainty, given by the covariance matrix `S`. Specifically, since the Mahalanobis distance is inversely proportional to `S`, an higher covariance corresponds to a smaller distance. In practise, given two states with the same Euclidean distance from a measurement, the Mahalanobis measure results closer for the most uncertain track.
+
+In the project, Simple Nearest Neighbor (SNN) is used as data association method. It consists in calculating all Mahalanobis distances between tracks and measurements and iteratively updating the closest association pair.
 
 ### Camera and LiDAR fusion
 ### Results
