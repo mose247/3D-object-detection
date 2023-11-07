@@ -182,6 +182,8 @@ z[1] = c_j - f_j * (R*x_pos[2])/(R*x_pos[0])      # c_j principal point vertical
 Thus, when a measurement arrives from the camera sensor, it is necessary to linearize the equation before using it in the Kalman Filter.
 
 ### Results
+The tracking system accurately traces all valid objects within the chosen sample sequences by fusing both LiDAR and camera measurements. It achieves an RMSE (Root Mean Square Error) below 0.2 for all the 'confirmed' tracks. However, some false detections are still present. Nevertheless, these 'ghost' tracks are correctly removed after a few frames due to a lack of supporting measurements. 
+
 | Camera + LiDAR fusion 
 :------------: |
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/lidar_camera_tracking.gif) 
