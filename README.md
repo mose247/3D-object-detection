@@ -105,6 +105,22 @@ In this section a more objective evaluation of the models' performance is provid
 ## Object Tracking
 
 ### Extended Kalman Filter
+To track the position of targets in the 3D space an Extended Kalman Filter (EKF) is used. In the project, the state vector `x = [x, y, z, vx, vy, vz]` is a 6-dimension array, where the three initial entries represent the object's position and the remaining ones its velocity. The state estimation involves two steps:
+
+1. _Prediction step_: predicts the next state `x` and covariance `P` matrix (representing estimation uncertainty) using the process state equation
+   ```
+   x = f(x)
+   P = F*P*F.T + Q      # Q is the process covariance matrix and models state equation uncertainty
+   ```
+2. _Update_step_: corrects the state `x` and covariance `P` estimation using sensor measurements. Their values are updated on the basis of the error between what the expected measurement (i.e. what the sensor were expected to "see" if the true state was the one estimated in the previous step) and the actual data.
+   ```
+   err = z - h(x)      # residual
+   S = H*P*H.T + R     # residual variance, R is the process covariance matrix and models measurements uncertainty
+   K = P*H.T*S.I       # Kalman gain
+   x = x + K*gamma     # state update
+   P = (I - K*H)*P     # covariance update 
+   ```
+
 ### Track Management
 ### Data Association
 ### Camera and LiDAR fusion
