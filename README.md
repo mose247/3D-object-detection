@@ -101,5 +101,5 @@ In this section a more objective evaluation of the models' performance is provid
 
 | Camera + LiDAR | LiDAR only |
 :------------: | :------------: 
-![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/camera_lidar_tracking.gif) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/camera_lidar_tracking.gif)
+![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/lidar_camera_tracking.gif) | ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/lidar_camera_tracking.gif)
 
