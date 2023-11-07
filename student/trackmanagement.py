@@ -26,40 +26,35 @@ class Track:
     '''Track class with state, covariance, id, score'''
     def __init__(self, meas, id):
         print('creating track no.', id)
-        M_rot = meas.sensor.sens_to_veh[0:3, 0:3] # rotation matrix from sensor to vehicle coordinates
+        rot = meas.sensor.sens_to_veh[0:3, 0:3] # rotation matrix from sensor to vehicle coordinates
+        trans = meas.sensor.sens_to_veh[0:3, 3]   # translation vector from sensor to vehicle coordinates
         
-        ############
-        # TODO Step 2: initialization:
-        # - replace fixed track initialization values by initialization of x and P based on 
-        # unassigned measurement transformed from sensor to vehicle coordinates
-        # - initialize track state and track score with appropriate values
-        ############
+        # initialize position with the first measurement and velocity to zero
+        x = np.zeros((6,1))
+        x[:3] = rot * meas.z + trans
+        self.x = np.matrix(x)
+        
+        # initialize position covariance with measurement covariance and velocity covariance to a high value
+        P = np.eye(6) * params.sigma_p44
+        P[:3,:3] = rot * meas.R * rot.transpose()
+        self.P = np.matrix(P)
+        
+        # initialize track state 
+        self.state = 'initialized'
 
-        self.x = np.matrix([[49.53980697],
-                        [ 3.41006279],
-                        [ 0.91790581],
-                        [ 0.        ],
-                        [ 0.        ],
-                        [ 0.        ]])
-        self.P = np.matrix([[9.0e-02, 0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00],
-                        [0.0e+00, 9.0e-02, 0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00],
-                        [0.0e+00, 0.0e+00, 6.4e-03, 0.0e+00, 0.0e+00, 0.0e+00],
-                        [0.0e+00, 0.0e+00, 0.0e+00, 2.5e+03, 0.0e+00, 0.0e+00],
-                        [0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00, 2.5e+03, 0.0e+00],
-                        [0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00, 0.0e+00, 2.5e+01]])
-        self.state = 'confirmed'
-        self.score = 0
-        
-        ############
-        # END student code
-        ############ 
+        # initialize a list to store whether the track was detected in the last n frames (1-detected, 0-undetected)
+        self.last_n_detections = collections.deque([0]*params.window, params.window)
+        self.last_n_detections.append(1)    
+
+        # initialize track score
+        self.update_score()
                
         # other track attributes
         self.id = id
         self.width = meas.width
         self.length = meas.length
         self.height = meas.height
-        self.yaw =  np.arccos(M_rot[0,0]*np.cos(meas.yaw) + M_rot[0,1]*np.sin(meas.yaw)) # transform rotation from sensor to vehicle coordinates
+        self.yaw =  np.arccos(rot[0,0]*np.cos(meas.yaw) + rot[0,1]*np.sin(meas.yaw)) # transform rotation from sensor to vehicle coordinates
         self.t = meas.t
 
     def set_x(self, x):
@@ -78,9 +73,12 @@ class Track:
             self.width = c*meas.width + (1 - c)*self.width
             self.length = c*meas.length + (1 - c)*self.length
             self.height = c*meas.height + (1 - c)*self.height
-            M_rot = meas.sensor.sens_to_veh
-            self.yaw = np.arccos(M_rot[0,0]*np.cos(meas.yaw) + M_rot[0,1]*np.sin(meas.yaw)) # transform rotation from sensor to vehicle coordinates
-        
+            rot = meas.sensor.sens_to_veh
+            self.yaw = np.arccos(rot[0,0]*np.cos(meas.yaw) + rot[0,1]*np.sin(meas.yaw)) # transform rotation from sensor to vehicle coordinates
+    
+    def update_score(self):
+        # update track score based on the number of detection is the last n frames
+        self.score = sum(self.last_n_detections) / len(self.last_n_detections)
         
 ###################        
 
@@ -106,19 +104,29 @@ class Trackmanagement:
             # check visibility    
             if meas_list: # if not empty
                 if meas_list[0].sensor.in_fov(track.x):
-                    # your code goes here
-                    pass 
-
+                    # mark track as undetected and decrease score
+                    track.last_n_detections.append(0)
+                    track.update_score()                                 
+                    
         # delete old tracks   
+        for track in self.track_list:
+            # use different score threshlolds for different track states
+            if track.state == 'confirmed':
+                if track.score < params.delete_threshold_conf: 
+                    self.delete_track(track)
+            else: 
+                if track.score < params.delete_threshold_tent: 
+                    self.delete_track(track)
 
-        ############
-        # END student code
-        ############ 
-            
+            # delete if covariance is too high
+            if track.P[0,0]>params.max_P or track.P[1,1]>params.max_P:
+                self.delete_track(track)
+
         # initialize new track with unassigned measurement
         for j in unassigned_meas: 
             if meas_list[j].sensor.name == 'lidar': # only initialize with lidar measurements
                 self.init_track(meas_list[j])
+
             
     def addTrackToList(self, track):
         self.track_list.append(track)
@@ -134,14 +142,12 @@ class Trackmanagement:
         self.track_list.remove(track)
         
     def handle_updated_track(self, track):      
-        ############
-        # TODO Step 2: implement track management for updated tracks:
-        # - increase track score
-        # - set track state to 'tentative' or 'confirmed'
-        ############
+        # increase track score
+        track.last_n_detections.append(1)
+        track.update_score()
 
-        pass
-        
-        ############
-        # END student code
-        ############ 
+        # set track state to 'tentative' or 'confirmed'
+        if track.score > params.confirmed_threshold:
+            track.state = 'confirmed'
+        else:
+            track.state = 'tentative'
