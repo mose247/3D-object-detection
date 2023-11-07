@@ -19,7 +19,7 @@ The project consists of two major parts:
    2. [Track Management](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#track-managemnent)
    3. [Data Association](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#data-association)
    4. [Camera and LiDAR dusion](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#camera-and-lidar-fusion)
-   5. [Results](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#results)
+   5. [Results & Future Improvements](https://github.com/mose247/sensor-fusion-and-tracking/tree/main#results--future-improvements)
 
 ## Install & Run
 To setup the project, start by creating a local copy of the current repository:
@@ -181,10 +181,15 @@ z[1] = c_j - f_j * (R*x_pos[2])/(R*x_pos[0])      # c_j principal point vertical
 ```
 Thus, when a measurement arrives from the camera sensor, it is necessary to linearize the equation before using it in the Kalman Filter.
 
-### Results
+### Results & Future Improvements
 The tracking system accurately traces all valid objects within the chosen sample sequences by fusing both LiDAR and camera measurements. It achieves an RMSE (Root Mean Square Error) below 0.25 for all the `confirmed` tracks. However, some false detections are still present. Nevertheless, these 'ghost' tracks are correctly removed after a few frames due to a lack of supporting measurements. 
 
 | Camera + LiDAR fusion 
 :------------: |
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/lidar_camera_tracking.gif) 
 ![](https://github.com/mose247/sensor-fusion-and-tracking/blob/main/img/RMSE_lidar_camera.png) 
+
+Incorporating data from both LiDAR and camera sources enhances tracking robustness compared to a single-modality system. Indeed, LiDAR systems may encounter difficulties in rainy conditions, whereas cameras are susceptible to issues arising from overexposure or underexposure. Leveraging both modalities enables more effective filtering of unreliable detections and tracks.
+
+In the project we only use the roof LiDAR and the front camera available on the Waymo car. Incorporating all the other available sensors should increase the tracking performances and range. Moreover, including radar measurements enables to observe directly velocity part of the state, which can be only estimated indirectly from LiDAR and camera data.
+
